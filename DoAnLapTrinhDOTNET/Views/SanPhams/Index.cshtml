@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Models.Framework.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh mục sản phâm</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên Loại
+        </th>
+        <th>
+            Tên
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th>
+            Giá
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiSanPham.Ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ten)
+        </td>
+        <td>
+            <img style="height: 100px;width:70px" src="~/UploadImg/@Html.DisplayFor(modelItem => item.Images)" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mota)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDSanPham }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDSanPham }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDSanPham })
+        </td>
+    </tr>
+}
+
+</table>
