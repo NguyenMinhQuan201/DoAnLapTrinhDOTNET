@@ -5,9 +5,10 @@ class CartController {
         this.renderCartsContent();
         this.allPrice();
         $('#icolour').on('change', function () {
+            console.log("heheheheh");
             var size = $('#isize').val();
             var colour = $('#icolour').val();
-            var Id = $('.button_add_to_cart').data('id');
+            var Id = $('.button_add_to_cart_new').data('id');
             $.ajax({
                 url: "/Events/onCheck",
                 data: { id: Id, mau: colour, kich: size },
@@ -15,21 +16,22 @@ class CartController {
                 type: "POST",
                 success: function (response) {
                     if (response.status == false) {
-                        $('.button_add_to_cart').attr("disabled", true);
-                        $('.button_add_to_cart').html("Đã hết hàng")
+                        $('.button_add_to_cart_new').attr("disabled", true);
+                        $('.primary-btn').html("Đã hết hàng")
                     }
                     else {
-                        $('.button_add_to_cart').attr("disabled", false);
-                        $('.button_add_to_cart').html("ADD TO CART")
+                        $('.button_add_to_cart_new').attr("disabled", false);
+                        $('.primary-btn').html("ADD TO CART")
 
                     }
                 }
             })
         });
         $('#isize').on('change', function () {
+            console.log("heheheheh");
             var size = $('#isize').val();
             var colour = $('#icolour').val();
-            var Id = $('.button_add_to_cart').data('id');
+            var Id = $('.button_add_to_cart_new').data('id');
             $.ajax({
                 url: "/Events/onCheck2",
                 data: { id: Id, mau: colour, kich: size },
@@ -37,12 +39,12 @@ class CartController {
                 type: "POST",
                 success: function (response) {
                     if (response.status == false) {
-                        $('.button_add_to_cart').attr("disabled", true);
-                        $('.button_add_to_cart').html("Đã hết hàng")
+                        $('.button_add_to_cart_new').attr("disabled", true);
+                        $('.primary-btn').html("Đã hết hàng")
                     }
                     else {
-                        $('.button_add_to_cart').attr("disabled", false);
-                        $('.button_add_to_cart').html("ADD TO CART")
+                        $('.button_add_to_cart_new').attr("disabled", false);
+                        $('.primary-btn').html("ADD TO CART")
                     }
                 }
             })
@@ -75,7 +77,7 @@ class CartController {
             }
             
         });
-        $('.button_add_to_cart').on('click', function () {
+        $('.button_add_to_cart_new').on('click', function () {
             console.log("ok");
             let Carts = localStorage.getItem('Carts') ? JSON.parse(localStorage.getItem('Carts')) : [];
             var click = $(this);
@@ -176,9 +178,7 @@ class CartController {
                         }
                         if (response.status == true ) {
                             var link = response.url;
-                            Carts = [];
-                            localStorage.setItem('Carts', JSON.stringify(Carts));
-                            localStorage.setItem('TT', 0);
+                            
                             /*alert("XONG!");*/
                             /*window.location.href = "";*/
                             location.href = link

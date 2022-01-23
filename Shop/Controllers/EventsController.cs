@@ -36,6 +36,7 @@ namespace Shop.Controllers
                 var dao = new EventsModels();
                 ViewBag.MauSacSP = new SelectList(dao.ListAll(Id), "ID", "MauSacSP", 1);
                 ViewBag.KichCoSP = new SelectList(dao.ListAllSize(Id), "ID", "KichCoSP", 1);
+                
             }
             ChiTietSanPham chiTietSanPham  = await db.ChiTietSanPhams.Where(x=>x.IDSanPham==id).FirstOrDefaultAsync();
             if (chiTietSanPham == null)

@@ -208,7 +208,14 @@ h3.h3-cuoi{
     line-height: 1.2;
     font-size: 16px;
 }
-.option_colour{
+.option_colour {
+	width: 300px;
+	height: 44px;
+	float: left;
+	margin-left: 20px;
+	font-size: 16px;
+}
+.option_isize {
 	width: 300px;
 	height: 44px;
 	float: left;
