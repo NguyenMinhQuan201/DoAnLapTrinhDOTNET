@@ -52,14 +52,19 @@
   <ItemGroup>
     <Compile Include="AccountModels.cs" />
     <Compile Include="EventsModels.cs" />
+    <Compile Include="Framework\ChiTietHoaDon.cs" />
     <Compile Include="Framework\ChiTietSanPham.cs" />
+    <Compile Include="Framework\HoaDon.cs" />
     <Compile Include="Framework\KichCo.cs" />
+    <Compile Include="Framework\LienHe.cs" />
     <Compile Include="Framework\LipstickDbContext.cs" />
     <Compile Include="Framework\LoaiSanPham.cs" />
     <Compile Include="Framework\MauSac.cs" />
     <Compile Include="Framework\NguoiDung.cs" />
     <Compile Include="Framework\SanPham.cs" />
     <Compile Include="Framework\sysdiagram.cs" />
+    <Compile Include="Framework\ThongKe.cs" />
+    <Compile Include="Framework\TinTuc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -57,7 +57,6 @@
         prependTo: '#mobile-menu-wrap',
         allowParentLinks: true
     });
-
     /*------------------
         Accordin Active
     --------------------*/
@@ -105,10 +104,15 @@
     /*-------------------
 		Radio Btn
 	--------------------- */
-    $(".product__color__select label, .shop__sidebar__size label, .product__details__option__size label").on('click', function () {
+    /*$(".product__color__select label, .shop__sidebar__size label, .product__details__option__size label").on('click', function () {
         $(".product__color__select label, .shop__sidebar__size label, .product__details__option__size label").removeClass('active');
         $(this).addClass('active');
     });
+    $(".product__details__option__size2 label").on('click', function () {
+        console.log("lala");
+        $(".product__details__option__size2 label").removeClass('active');
+        $(this).addClass('active');
+    });*/
 
     /*-------------------
 		Scroll

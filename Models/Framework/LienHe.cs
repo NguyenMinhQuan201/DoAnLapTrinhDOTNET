@@ -6,26 +6,18 @@ namespace Models.Framework
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("NguoiDung")]
-    public partial class NguoiDung
+    [Table("LienHe")]
+    public partial class LienHe
     {
         [StringLength(50)]
-        public string UserName { get; set; }
-
-        [StringLength(50)]
-        public string PassWord { get; set; }
+        public string Name { get; set; }
 
         [StringLength(50)]
         public string Email { get; set; }
 
-        public int? Phone { get; set; }
+        [StringLength(50)]
+        public string Mess { get; set; }
 
         public int ID { get; set; }
-
-        [StringLength(50)]
-        public string DiaChi { get; set; }
-
-        [StringLength(50)]
-        public string Image { get; set; }
     }
 }

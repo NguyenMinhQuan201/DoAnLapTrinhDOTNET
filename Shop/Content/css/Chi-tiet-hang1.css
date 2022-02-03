@@ -305,28 +305,3 @@ h3.h3-cuoi{
 }
 
 /* last footer */
-.footer{
-	width: 100%;
-	background-color: #F5CFD1;
-}
-.last_footer{
-	width: 80%;
-	height: 60px;
-	margin: 0 auto;
-	background-color: #F5CFD1;
-}
-
-.last_footer>ul{
-	display: inline-block;
-	padding-left: 40px;
-	padding-right: 40px;
-
-}
-
-.last_footer>ul>img{
-	margin-left: 10px;
-	margin-right: 10px;
-}
-.fb_insta{
-	float: right;
-}

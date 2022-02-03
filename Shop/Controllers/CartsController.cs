@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using PayPal.Api;
+using System.Data.Entity.Validation;
+
 namespace Shop.Controllers
 {
     public class CartsController : Controller
@@ -27,7 +29,7 @@ namespace Shop.Controllers
                 int b = Convert.ToInt32(item.Size);
                 var fmau = db.MauSacs.Where(x => x.ID == a).FirstOrDefault();
                 var fkich = db.KichCoes.Where(x => x.ID == b).FirstOrDefault();
-                var find = db.ChiTietSanPhams.Where(x => x.IDSanPham == item.Id && x.KichCoSP == fkich.KichCoSP && x.MauSacSP == fmau.MauSacSP).FirstOrDefault();
+                var find = db.ChiTietSanPhams.Where(x => x.IDSanPham == item.Id && x.KichCoSP == fkich.KichCoSP && x.MauSacSP == fmau.MauSacSP && x.SoLuong>0).FirstOrDefault();
                 return Json(
                 new
                 {
@@ -38,6 +40,7 @@ namespace Shop.Controllers
                     Ten = find.Ten,
                     Mau = find.MauSacSP,
                     Kich = find.KichCoSP,
+                    SoLuong=find.SoLuong,
                 });
             }
 
@@ -113,7 +116,7 @@ namespace Shop.Controllers
             return payment.Execute(apiContext, paymentExecution);
         }
         //Create payment with paypal method
-        public ActionResult PaymentWithPaypal(string cartTemp)
+        public ActionResult PaymentWithPaypal(string cartTemp, string addRess, string phone)
         {
             //Gettings context from  the paypal bases on clintId and Sec for Payment
             APIContext apiContext = PaypalConfiguration.GetAPIContext();
@@ -170,8 +173,50 @@ namespace Shop.Controllers
                 /*return Json(new { status = false, });*/
                 return View("Failure");
             }
+           
             return View("Success");
             /*return Json(new { status = true, url="", JsonRequestBehavior.AllowGet });*/
+        }
+
+        public JsonResult changePrice(string id,string sl)
+        {
+            int ID = Convert.ToInt32(id);
+            int SL = Convert.ToInt32(sl);
+            var find = db.ChiTietSanPhams.Where(x => x.ID == ID).FirstOrDefault();
+            if (find != null)
+            {
+                if(find.SoLuong < SL)
+                {
+                  return Json(
+                    new
+                    {
+                        status = false,
+                        max=find.SoLuong,
+                    });
+                }
+                
+            }
+            return Json(new { status = true });
+        }
+        public JsonResult RemakeRender(string cartTemp)
+        {
+            List < Cart > a= new List<Cart>();
+            var jsoncart = new JavaScriptSerializer().Deserialize<List<Cart>>(cartTemp);
+            foreach(var item in jsoncart)
+            {
+                var find = db.ChiTietSanPhams.Find(item.Prime);
+                if (find.SoLuong == 0)
+                {
+                    item.TrangThai = false;
+                    
+                }
+                else
+                {
+                    item.TrangThai = true;
+                }
+                a.Add(item);
+            }            
+            return Json(new { status = true,list = a });
         }
     }
 }
