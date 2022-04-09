@@ -21,7 +21,7 @@ namespace Shop.Controllers
             int pageSize = 8;
             int pageNumber = (page ?? 1);
 */
-            var result = await db.ChiTietSanPham.ToListAsync();
+            var result = await db.SanPhams.ToListAsync();
             return View(result);
         }
         public async Task<ActionResult> Details(int? id)
@@ -36,6 +36,7 @@ namespace Shop.Controllers
                 var dao = new EventsModels();
                 ViewBag.MauSacSP = new SelectList(dao.ListAll(Id), "ID", "MauSacSP", 1);
                 ViewBag.KichCoSP = new SelectList(dao.ListAllSize(Id), "ID", "KichCoSP", 1);
+                
             }
             ChiTietSanPham chiTietSanPham  = await db.ChiTietSanPhams.Where(x=>x.IDSanPham==id).FirstOrDefaultAsync();
             if (chiTietSanPham == null)
@@ -66,6 +67,39 @@ namespace Shop.Controllers
                 return Json(new { status = false });
             }
             return Json(new { status = true });
+        }
+        public JsonResult checkbysize(int kich)
+        {
+            List<MauSac> arr = new List<MauSac>();
+            var fkich = db.KichCoes.Find(kich);
+            var find = db.ChiTietSanPhams.Where(x => x.KichCoSP == fkich.KichCoSP).Select(x=>x.MauSacSP).ToList();
+            foreach(var item in find)
+            {
+                var findmau = db.MauSacs.Where(x => x.MauSacSP == item).FirstOrDefault();
+                var ha = new MauSac { ID = findmau.ID, MauSacSP = item };
+                arr.Add(ha);
+            }
+            if (find == null)
+            {
+                return Json(new { status = false });
+            }
+            return Json(new { status = true,
+                Arr=arr
+            });
+        }
+        public JsonResult KiemTra(int id, int mau, int kich)
+        {
+            var fmau = db.MauSacs.Find(mau);
+            var fkich = db.KichCoes.Find(kich);
+            var find = db.ChiTietSanPhams.Where(x => x.IDSanPham == id && x.KichCoSP == fkich.KichCoSP && x.MauSacSP == fmau.MauSacSP && x.SoLuong > 0).FirstOrDefault();
+            if (find == null)
+            {
+                return Json(new { status = false });
+            }
+            return Json(new
+            {
+                status = true,
+            });
         }
     }
 }

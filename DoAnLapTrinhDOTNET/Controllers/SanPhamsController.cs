@@ -18,7 +18,7 @@ namespace DoAnLapTrinhDOTNET.Controllers
         // GET: SanPhams
         public async Task<ActionResult> Index()
         {
-            var sanPhams = db.ChiTietSanPham.Include(s => s.LoaiSanPham);
+            var sanPhams = db.SanPhams.Include(s => s.LoaiSanPham);
             return View(await sanPhams.ToListAsync());
         }
 
@@ -29,7 +29,7 @@ namespace DoAnLapTrinhDOTNET.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = await db.ChiTietSanPham.FindAsync(id);
+            SanPham sanPham = await db.SanPhams.FindAsync(id);
             if (sanPham == null)
             {
                 return HttpNotFound();
@@ -60,7 +60,7 @@ namespace DoAnLapTrinhDOTNET.Controllers
                 ViewBag.Filetype = f.ContentType;
                 ViewBag.Filesize = f.ContentLength;
                 sanPham.Images = f.FileName;
-                db.ChiTietSanPham.Add(sanPham);
+                db.SanPhams.Add(sanPham);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -76,7 +76,7 @@ namespace DoAnLapTrinhDOTNET.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = await db.ChiTietSanPham.FindAsync(id);
+            SanPham sanPham = await db.SanPhams.FindAsync(id);
             if (sanPham == null)
             {
                 return HttpNotFound();
@@ -116,7 +116,7 @@ namespace DoAnLapTrinhDOTNET.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = await db.ChiTietSanPham.FindAsync(id);
+            SanPham sanPham = await db.SanPhams.FindAsync(id);
             if (sanPham == null)
             {
                 return HttpNotFound();
@@ -129,8 +129,8 @@ namespace DoAnLapTrinhDOTNET.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            SanPham sanPham = await db.ChiTietSanPham.FindAsync(id);
-            db.ChiTietSanPham.Remove(sanPham);
+            SanPham sanPham = await db.SanPhams.FindAsync(id);
+            db.SanPhams.Remove(sanPham);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

@@ -40,7 +40,7 @@ namespace DoAnLapTrinhDOTNET.Controllers
         // GET: ChiTietSanPhams/Create
         public ActionResult Create()
         {
-            ViewBag.IDSanPham = new SelectList(db.ChiTietSanPham, "IDSanPham", "Ten");
+            ViewBag.IDSanPham = new SelectList(db.ChiTietSanPhams, "IDSanPham", "Ten");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace DoAnLapTrinhDOTNET.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDSanPham = new SelectList(db.ChiTietSanPham, "IDSanPham", "Ten", chiTietSanPham.IDSanPham);
+            ViewBag.IDSanPham = new SelectList(db.ChiTietSanPhams, "IDSanPham", "Ten", chiTietSanPham.IDSanPham);
             return View(chiTietSanPham);
         }
 
@@ -74,7 +74,7 @@ namespace DoAnLapTrinhDOTNET.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IDSanPham = new SelectList(db.ChiTietSanPham, "IDSanPham", "Ten", chiTietSanPham.IDSanPham);
+            ViewBag.IDSanPham = new SelectList(db.ChiTietSanPhams, "IDSanPham", "Ten", chiTietSanPham.IDSanPham);
             return View(chiTietSanPham);
         }
 
@@ -91,7 +91,7 @@ namespace DoAnLapTrinhDOTNET.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDSanPham = new SelectList(db.ChiTietSanPham, "IDSanPham", "Ten", chiTietSanPham.IDSanPham);
+            ViewBag.IDSanPham = new SelectList(db.ChiTietSanPhams, "IDSanPham", "Ten", chiTietSanPham.IDSanPham);
             return View(chiTietSanPham);
         }
 

@@ -21,5 +21,11 @@ namespace Models.Framework
         public int? Phone { get; set; }
 
         public int ID { get; set; }
+
+        [StringLength(50)]
+        public string DiaChi { get; set; }
+
+        [StringLength(50)]
+        public string Image { get; set; }
     }
 }
