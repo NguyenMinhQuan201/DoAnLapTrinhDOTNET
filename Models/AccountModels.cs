@@ -1,4 +1,5 @@
-﻿using Models.Framework;
+﻿using Models.Common;
+using Models.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,8 @@ namespace Models
         }
         public bool Login(string userName, string passWord)
         {
-            var user = _context.NguoiDungs.Where(u => u.UserName == userName && u.PassWord == passWord).Count();
+            var mk = Encryptor.MD5Hash(passWord);
+            var user = _context.NguoiDungs.Where(u => u.UserName == userName && u.PassWord == mk).Count();
             if (user == 0)
             {
                 return false;

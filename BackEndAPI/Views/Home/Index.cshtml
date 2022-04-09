@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Models.Framework.LoaiSanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Inhadex</h2>
+
+
+<div class="container">
+    <h1>ViewBag.Title</h1>
+    @{
+        int i = 1;
+        foreach (var item in Model)
+        {
+            <h4>User @i</h4>
+            <h5>@item.IDLoaiSanPham</h5>
+            <h5>@item.Ten</h5>
+            <h5>@item.TrangThai</h5>
+            <h5>@item.Alias</h5>
+            i++;
+        }
+    }
+</div>
+
+
+
+
+
+
+<table class="js__Getall table">
+</table>
+<h2 class="js_page"></h2>
+
+
+

@@ -29,5 +29,7 @@ namespace DoAnLapTrinhDOTNET.Common
 
             return strBuilder.ToString();
         }
+        public static string GetToken;
+        
     }
 }

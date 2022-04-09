@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountModels.cs" />
+    <Compile Include="Common\Encryptor.cs" />
     <Compile Include="EventsModels.cs" />
     <Compile Include="Framework\ChiTietHoaDon.cs" />
     <Compile Include="Framework\ChiTietSanPham.cs" />
