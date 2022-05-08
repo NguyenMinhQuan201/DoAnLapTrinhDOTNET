@@ -5,11 +5,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<head>
+    <title>Table Report</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/animate/animate.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/select2/select2.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/css/util.css" rel="stylesheet" />
+    <link href="~/Content/table/css/main.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+</head>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<body>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100">
+                    <table>
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="column1">Tên</th>
+                                <th class="column2">Alias</th>
+                                <th class="column3">Trạng thái</th>
+                                <th class="column6">Chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="column1">@Html.DisplayFor(modelItem => item.Ten)</td>
+                                    <td class="column2">@Html.DisplayFor(modelItem => item.Alias)</td>
+                                    <td class="column3">@Html.DisplayFor(modelItem => item.TrangThai)</td>
+                                    <td class="column6">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.IDLoaiSanPham }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.IDLoaiSanPham }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.IDLoaiSanPham })
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+@*
 <table class="table">
     <tr>
         <th>
@@ -24,23 +85,25 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ten)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Alias)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrangThai)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDLoaiSanPham }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDLoaiSanPham }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDLoaiSanPham })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IDLoaiSanPham }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IDLoaiSanPham }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IDLoaiSanPham })
+            </td>
+        </tr>
+    }
 
 </table>
+*@

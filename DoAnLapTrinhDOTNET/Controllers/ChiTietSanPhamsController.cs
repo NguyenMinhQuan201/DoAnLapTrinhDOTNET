@@ -40,7 +40,7 @@ namespace DoAnLapTrinhDOTNET.Controllers
         // GET: ChiTietSanPhams/Create
         public ActionResult Create()
         {
-            ViewBag.IDSanPham = new SelectList(db.ChiTietSanPhams, "IDSanPham", "Ten");
+            ViewBag.IDSanPham = new SelectList(db.SanPhams, "IDSanPham", "Ten");
             return View();
         }
 

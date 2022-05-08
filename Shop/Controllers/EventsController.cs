@@ -8,24 +8,34 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList;
 namespace Shop.Controllers
 {
     public class EventsController : Controller
     {
         private LipstickDbContext db = new LipstickDbContext();
+        private static int M;
         // GET: Events
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? page, int?id)
         {
-           /* if (page == null) page = 1;
-            int pageSize = 8;
+            ViewBag.IDLoaiSanPham = new SelectList(db.LoaiSanPhams, "IDLoaiSanPham", "Ten");
+            if (page == null) page = 1;
+            int pageSize = 1;
             int pageNumber = (page ?? 1);
-*/
-            var result = await db.SanPhams.ToListAsync();
-            return View(result);
+            if (id != null)
+            {
+                var result = await db.SanPhams.Where(x=>x.IDLoaiSanPham==id).ToListAsync();
+                return View((result.ToPagedList(pageNumber, pageSize)));
+            }
+            else
+            {
+                var result = await db.SanPhams.ToListAsync();
+                return View((result.ToPagedList(pageNumber, pageSize)));
+            }
         }
         public async Task<ActionResult> Details(int? id)
         {
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -33,6 +43,7 @@ namespace Shop.Controllers
             else
             {
                 int Id = id.Value;
+                M = id.Value;
                 var dao = new EventsModels();
                 ViewBag.MauSacSP = new SelectList(dao.ListAll(Id), "ID", "MauSacSP", 1);
                 ViewBag.KichCoSP = new SelectList(dao.ListAllSize(Id), "ID", "KichCoSP", 1);
@@ -100,6 +111,15 @@ namespace Shop.Controllers
             {
                 status = true,
             });
+        }
+        public ActionResult MoreToYou(int? page)
+        {
+            if (page == null) page = 1;
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            var find = db.SanPhams.Where(x=>x.IDSanPham==M).FirstOrDefault();
+            var result =  db.SanPhams.Where(x => x.IDLoaiSanPham == find.IDLoaiSanPham).ToList();
+            return PartialView((result.ToPagedList(pageNumber, pageSize)));
         }
     }
 }

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Models.Framework.TinTuc>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <title>Table News</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/animate/animate.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/select2/select2.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/css/util.css" rel="stylesheet" />
+    <link href="~/Content/table/css/main.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+</head>
+
+<body>
+    @Html.ActionLink("Create New", "Create")
+
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100">
+                    <table>
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="column1">ID</th>
+                                <th class="column2">Image</th>
+                                <th class="column3">Ngày tạo</th>
+                                <th class="column4">Tiêu đề</th>
+                                <th class="column6">Nội dung</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td class="column1">@Html.DisplayFor(modelItem => item.ID)</td>
+                                <td class="column2" style="padding: 2px"><img style="width:90px" src="~/UploadImg/@Html.DisplayFor(modelItem => item.Image)" /></td>
+                                <td class="column3">@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                                <td class="column4">@Html.DisplayFor(modelItem => item.TieuDe)</td>
+                                <td class="column6">@Html.DisplayFor(modelItem => item.NoiDung)</td>
+
+                            </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
