@@ -63,6 +63,7 @@ namespace Shop.Controllers
                     Gia = tong,
                     SDT = phone,
                     DiaChi = addRess,
+                    NgayGio = DateTime.UtcNow
                 };
                 db.HoaDons.Add(order);
                 db.SaveChanges();
@@ -71,7 +72,7 @@ namespace Shop.Controllers
             }
             catch (Exception)
             {
-                Console.WriteLine("loi");
+                Console.WriteLine("Lỗi");
                 return Json(new { status = false });
             }
         }
@@ -92,6 +93,7 @@ namespace Shop.Controllers
                     Gia = tong,
                     SDT = jsonOrder[0].phone,
                     DiaChi = jsonOrder[0].address,
+                    NgayGio = DateTime.UtcNow
                 };
                 db.HoaDons.Add(order);
                 db.SaveChanges();

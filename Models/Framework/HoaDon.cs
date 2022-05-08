@@ -28,6 +28,8 @@ namespace Models.Framework
         [StringLength(50)]
         public string UserName { get; set; }
 
+        public DateTime? NgayGio { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
     }

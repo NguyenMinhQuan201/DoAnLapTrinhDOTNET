@@ -5,12 +5,86 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<head>
+    <title>Table Report</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/animate/animate.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/select2/select2.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/css/util.css" rel="stylesheet" />
+    <link href="~/Content/table/css/main.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/css/table_11col.css" rel="stylesheet" />
+</head>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+
+<body>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100">
+                    <table>
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="col1">Tên</th>
+                                <th class="col2">Tên chi tiết</th>
+                                <th class="col3">ID loại sản</th>
+                                <th class="col4">Ảnh</th>
+                                <th class="col5">Giá</th>
+                                <th class="col6">Mô tả</th>
+                                <th class="col7">Màu sắc SP</th>
+                                <th class="col8">Kích cỡ SP</th>
+                                <th class="col9">Số lượng</th>
+                                <th class="col10">Lượt xem</th>
+                                <th class="col11">Chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="col1">@Html.DisplayFor(modelItem => item.SanPham.Ten)</td>
+                                    <td class="col2">@Html.DisplayFor(modelItem => item.Ten)</td>
+                                    <td class="col3">@Html.DisplayFor(modelItem => item.IDLoaiSanPham)</td>
+                                    <td class="col4">@Html.DisplayFor(modelItem => item.Images)</td>
+                                    <td class="col5">@Html.DisplayFor(modelItem => item.Gia)</td>
+                                    <td class="col6">@Html.DisplayFor(modelItem => item.Mota)</td>
+                                    <td class="col7">@Html.DisplayFor(modelItem => item.MauSacSP)</td>
+                                    <td class="col8">@Html.DisplayFor(modelItem => item.KichCoSP)</td>
+                                    <td class="col9">@Html.DisplayFor(modelItem => item.SoLuong)</td>
+                                    <td class="col10">@Html.DisplayFor(modelItem => item.LuotXem)</td>
+                                    <td class="col11">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.IDLoaiSanPham }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.IDLoaiSanPham }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.IDLoaiSanPham })
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.SanPham.Ten)
@@ -45,44 +119,46 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SanPham.Ten)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ten)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDLoaiSanPham)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Images)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mota)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MauSacSP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KichCoSP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoLuong)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LuotXem)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SanPham.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDLoaiSanPham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Images)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MauSacSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KichCoSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuotXem)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>
+*@

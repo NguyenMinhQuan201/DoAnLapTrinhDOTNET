@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Models.Framework.HoaDon>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <title>Table Report</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/animate/animate.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/select2/select2.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/table/css/util.css" rel="stylesheet" />
+    <link href="~/Content/table/css/main.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+</head>
+
+<body>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100">
+                    <table>
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="col1">ID hóa đơn</th>
+                                <th class="col2">Địa chỉ</th>
+                                <th class="col3">Số điện thoại</th>
+                                <th class="col4">Giá</th>
+                                <th class="col5">Người dùng</th>
+                                <th class="col6">Ngày giờ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="col1">@Html.DisplayFor(modelItem => item.IDHoaDon)</td>
+                                    <td class="col2">@Html.DisplayFor(modelItem => item.DiaChi)</td>
+                                    <td class="col3">@Html.DisplayFor(modelItem => item.SDT)</td>
+                                    <td class="col4">@Html.DisplayFor(modelItem => item.Gia)</td>
+                                    <td class="col5">@Html.DisplayFor(modelItem => item.UserName)</td>
+                                    <td class="col6">@Html.DisplayFor(modelItem => item.NgayGio)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+
+@*<head>
+
+        <link href="~/Content/css/report_dropdown.css" rel="stylesheet" />
+    </head>
+
+    <script type="text/javascript">
+        function hamDropdown() {
+            document.querySelector(".noidung_dropdown").classList.toggle("hienThi");
+        }
+    </script>
+
+    <body>
+        <div style="width: 96%; margin: 0 auto; margin-top: 10px;">
+            <div class="dropdown">
+                <button onclick="hamDropdown()" class="nut_dropdown">Year</button>
+                <div class="noidung_dropdown">
+                    <a href="#">Đường Dẫn 1</a>
+                    <a href="#">Đường Dẫn 2</a>
+                    <a href="#">Đường Dẫn 3</a>
+                </div>
+            </div>
+        </div>
+
+
+    </body>*@
