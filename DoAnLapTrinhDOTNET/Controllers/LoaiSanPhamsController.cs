@@ -8,17 +8,28 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Models.Framework;
+using DoAnLapTrinhDOTNET.service;
 
 namespace DoAnLapTrinhDOTNET.Controllers
 {
     public class LoaiSanPhamsController : Controller
     {
-        private LipstickDbContext db = new LipstickDbContext();
+        private LipstickDbContext db;
+        private IServiceApi _api;
+        public LoaiSanPhamsController(IServiceApi api)
+        {
+            db = new LipstickDbContext();
+            _api = api;
+        }
 
         // GET: LoaiSanPhams
         public async Task<ActionResult> Index()
         {
-            return View(await db.LoaiSanPhams.ToListAsync());
+            ViewBag.Title = "Home Page";
+            var list = await _api.GetAllLoaiSanPham();
+            if (list != null) // Nếu list user khác null thì trả về View có chứa list
+                return View(list);
+            return View();
         }
 
         // GET: LoaiSanPhams/Details/5
@@ -51,8 +62,10 @@ namespace DoAnLapTrinhDOTNET.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.LoaiSanPhams.Add(loaiSanPham);
+                var check = await _api.PostLoaiSanPham(loaiSanPham);
+                /*db.LoaiSanPhams.Add(loaiSanPham);
                 await db.SaveChangesAsync();
+                return RedirectToAction("Index");*/
                 return RedirectToAction("Index");
             }
 

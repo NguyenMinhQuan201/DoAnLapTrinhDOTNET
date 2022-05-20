@@ -1,5 +1,6 @@
 ﻿using DoAnLapTrinhDOTNET.Common;
 using DoAnLapTrinhDOTNET.Models;
+using DoAnLapTrinhDOTNET.service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,17 @@ namespace DoAnLapTrinhDOTNET.Controllers
 {
     public class AdminController : Controller
     {
+        private IServiceApi _api;
+        public AdminController(IServiceApi api)
+        {
+            _api = api;
+        }
         private static int i;
         // GET: AdminLogin
         [HttpGet]
         public ActionResult Index()
         {
-            if (i==1)
+            if (i == 1)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -26,8 +32,7 @@ namespace DoAnLapTrinhDOTNET.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(AdminLoginModel model)
         {
-            
-            if (Membership.ValidateUser(model.UserName, Encryptor.MD5Hash(model.PassWord)) && ModelState.IsValid)
+            if (Membership.ValidateUser(model.UserName, Encryptor.MD5Hash(model.Password)) && ModelState.IsValid)
             {
                 FormsAuthentication.SetAuthCookie(model.UserName, model.Remember);
                 i = 1;
@@ -38,6 +43,15 @@ namespace DoAnLapTrinhDOTNET.Controllers
                 ModelState.AddModelError("", "ten dang nhap hoac mat khau ko dung");
             }
             return View(model);
+        }
+        public JsonResult Gettoken(string token)
+        {
+            if (token != "")
+            {
+                Encryptor.GetToken = token;
+                return Json(new { status = true });
+            }
+            return Json(new { status = false });
         }
         public ActionResult Logout()
         {

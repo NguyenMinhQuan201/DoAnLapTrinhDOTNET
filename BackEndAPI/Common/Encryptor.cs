@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 
-namespace DoAnLapTrinhDOTNET.Common
+namespace BackEndAPI.Common
 {
     public static class Encryptor
     {
@@ -29,7 +29,5 @@ namespace DoAnLapTrinhDOTNET.Common
 
             return strBuilder.ToString();
         }
-        public static string GetToken;
-
     }
 }
