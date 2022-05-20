@@ -148,6 +148,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SanPhamsController.cs" />
+    <Compile Include="Controllers\ThongKeDoanhThuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -292,6 +293,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="UploadImg\" />
+    <Folder Include="Views\ThongKeDoanhThu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

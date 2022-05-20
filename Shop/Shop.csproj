@@ -438,6 +438,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Regis\Index.cshtml" />
     <Content Include="Views\Home\ProductsHot.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

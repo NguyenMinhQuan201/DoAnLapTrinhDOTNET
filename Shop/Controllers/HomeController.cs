@@ -27,6 +27,17 @@ namespace Shop.Controllers
             var lst = db.SanPhams.ToList();
             return PartialView(lst);
         }
+        public ActionResult News(/*int? page*/)
+        {
+            /*if (page == null) page = 1;
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);*/
+
+            /*var find = db.SanPhams.Where(x => x.Mota == M).FirstOrDefault();
+            var lst = db.SanPhams.Where(x => x.Mota == find.Mota).ToList();*/
+            /*var lst = db.SanPhams.ToList();*/
+            return PartialView();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
