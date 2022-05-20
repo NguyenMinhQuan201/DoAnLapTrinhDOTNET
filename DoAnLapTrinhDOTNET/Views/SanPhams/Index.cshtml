@@ -41,8 +41,9 @@
                             <tr class="table100-head">
                                 <th class="column1">Tên Loại</th>
                                 <th class="column2">Tên</th>
-                                <th class="column3">Ảnh</th>
-                                <th class="column4">Giá</th>
+                                <th class="column3" style="width:100px">Ảnh</th>
+                                <th class="column4">Giá nhập</th>
+                                <th class="column4">Giá bán</th>
                                 <th class="column5">Mô tả</th>
                                 <th class="column6">Chức năng</th>
                             </tr>
@@ -53,7 +54,8 @@
                                 <tr>
                                     <td class="column1" >@Html.DisplayFor(modelItem => item.LoaiSanPham.Ten)</td>
                                     <td class="column2" >@Html.DisplayFor(modelItem => item.Ten)</td>
-                                    <td class="column3" ><img style="height: 100px;width:70px" src="~/UploadImg/@Html.DisplayFor(modelItem => item.Images)" /></td>
+                                    <td class="column3" style="width:100px"><img style="height: 100px;width:70px" src="~/UploadImg/@Html.DisplayFor(modelItem => item.Images)" /></td>
+                                    <td class="column4" >@Html.DisplayFor(modelItem => item.GiaNhap)</td>
                                     <td class="column4" >@Html.DisplayFor(modelItem => item.Gia)</td>
                                     <td class="column5" >@Html.DisplayFor(modelItem => item.Mota)</td>
                                     <td class="column6">
