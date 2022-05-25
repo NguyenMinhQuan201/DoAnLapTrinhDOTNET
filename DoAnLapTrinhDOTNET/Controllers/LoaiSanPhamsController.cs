@@ -25,8 +25,9 @@ namespace DoAnLapTrinhDOTNET.Controllers
         // GET: LoaiSanPhams
         public async Task<ActionResult> Index()
         {
+            HttpCookie cook = Request.Cookies["token"];
             ViewBag.Title = "Home Page";
-            var list = await _api.GetAllLoaiSanPham();
+            var list = await _api.GetAllLoaiSanPham(cook.Value);
             if (list != null) // Nếu list user khác null thì trả về View có chứa list
                 return View(list);
             return View();
@@ -60,9 +61,10 @@ namespace DoAnLapTrinhDOTNET.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "IDLoaiSanPham,Ten,Alias,TrangThai")] LoaiSanPham loaiSanPham)
         {
+            HttpCookie cook = Request.Cookies["token"];
             if (ModelState.IsValid)
             {
-                var check = await _api.PostLoaiSanPham(loaiSanPham);
+                var check = await _api.PostLoaiSanPham(loaiSanPham, cook.Value);
                 /*db.LoaiSanPhams.Add(loaiSanPham);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");*/

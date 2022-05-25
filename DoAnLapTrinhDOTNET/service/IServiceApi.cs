@@ -10,8 +10,8 @@ namespace DoAnLapTrinhDOTNET.service
 {
     public interface IServiceApi
     {
-        Task<List<LoaiSanPham>> GetAllLoaiSanPham();
+        Task<List<LoaiSanPham>> GetAllLoaiSanPham(string token);
         Task<string> Authenticate(AdminLoginModel request);
-        Task<bool> PostLoaiSanPham(LoaiSanPham loaiSanPham);
+        Task<bool> PostLoaiSanPham(LoaiSanPham loaiSanPham,string token);
     }
 }

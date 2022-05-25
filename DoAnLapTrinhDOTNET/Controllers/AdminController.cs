@@ -4,6 +4,7 @@ using DoAnLapTrinhDOTNET.service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -30,11 +31,11 @@ namespace DoAnLapTrinhDOTNET.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(AdminLoginModel model)
+        public async Task<ActionResult> Index(AdminLoginModel model)
         {
-            if (Membership.ValidateUser(model.UserName, Encryptor.MD5Hash(model.Password)) && ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                FormsAuthentication.SetAuthCookie(model.UserName, model.Remember);
+                var a = await _api.Authenticate(model);
                 i = 1;
                 return RedirectToAction("Index", "Home", new { UserName = model.UserName });
             }
@@ -44,7 +45,7 @@ namespace DoAnLapTrinhDOTNET.Controllers
             }
             return View(model);
         }
-        public JsonResult Gettoken(string token)
+        /*public JsonResult Gettoken(string token)
         {
             if (token != "")
             {
@@ -52,6 +53,17 @@ namespace DoAnLapTrinhDOTNET.Controllers
                 return Json(new { status = true });
             }
             return Json(new { status = false });
+        }*/
+        public JsonResult Gettoken(string token)
+        {
+            Response.Cookies["token"].Value = token;
+            Response.Cookies["token"].Name = "token";
+            HttpCookie cook = Request.Cookies["token"];
+            if (cook == null)
+            {
+                return Json(new { status = false });
+            }
+            return Json(new { status = true }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Logout()
         {

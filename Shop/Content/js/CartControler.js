@@ -97,7 +97,11 @@ class CartController {
             var Id = $('.button_add_to_cart_new').data('id');
             $.ajax({
                 url: "/Events/onCheck",
-                data: { id: Id, mau: colour, kich: size },
+                data: {
+                    id: Id,
+                    mau: colour,
+                    kich: size
+                },
                 dataType: "json",
                 type: "POST",
                 success: function (response) {
