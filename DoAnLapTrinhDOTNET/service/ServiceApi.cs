@@ -16,18 +16,19 @@ using Newtonsoft.Json;
 using System.Text;
 using DoAnLapTrinhDOTNET.Common;
 using Azure;
+using Models;
+using Azure.Core;
 
 namespace DoAnLapTrinhDOTNET.service
 {
     public class ServiceApi : IServiceApi
     {
-        public async Task<List<LoaiSanPham>> GetAllLoaiSanPham()
+        public async Task<List<LoaiSanPham>> GetAllLoaiSanPham(string token)
         {
             string baseUrl = HttpContext.Current.Request.Url.Scheme + "://" + "localhost:44314" +
                 HttpContext.Current.Request.ApplicationPath.TrimEnd('/') + "/";   // Lấy base uri của website
             using (var httpClient = new HttpClient())
             {
-                var token = Encryptor.GetToken;
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage res = await httpClient.GetAsync(baseUrl + "api/LoaiSanPhams/daubuoi");
                 if (res.StatusCode == System.Net.HttpStatusCode.OK)
@@ -39,13 +40,12 @@ namespace DoAnLapTrinhDOTNET.service
                 return null;
             }
         }
-        public async Task<bool> PostLoaiSanPham(LoaiSanPham loaiSanPham)
+        public async Task<bool> PostLoaiSanPham(LoaiSanPham loaiSanPham,string token)
         {
             string baseUrl = HttpContext.Current.Request.Url.Scheme + "://" + "localhost:44314" +
                 HttpContext.Current.Request.ApplicationPath.TrimEnd('/') + "/";   // Lấy base uri của website
             using (var httpClient = new HttpClient())
             {
-                var token = Encryptor.GetToken;
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage res = await httpClient.PostAsJsonAsync(baseUrl + "api/LoaiSanPhams/PostLoaiSanPham", loaiSanPham);
                 if (res.StatusCode == System.Net.HttpStatusCode.OK)
@@ -60,18 +60,18 @@ namespace DoAnLapTrinhDOTNET.service
             string baseUrl = HttpContext.Current.Request.Url.Scheme + "://" + "localhost:44314" +
                 HttpContext.Current.Request.ApplicationPath.TrimEnd('/') + "/";   // Lấy base uri của website
 
-            var b = new AdminLoginModel()
+            var data = new TokenRender()
             {
 
                 UserName = request.UserName,
-                Password = Encryptor.MD5Hash(request.Password),
+                Password = request.Password,
                 grant_type = "password",
             };
-            var json = JsonConvert.SerializeObject(b);
+            var json = JsonConvert.SerializeObject(data);
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
             using (var httpClient = new HttpClient())
             {
-                HttpResponseMessage res = await httpClient.PostAsJsonAsync(baseUrl + "token", b);
+                HttpResponseMessage res = await httpClient.PostAsync("https://localhost:44314/token", httpContent);
                 if (res.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     string a = res.Content.ReadAsAsync<string>().Result;
