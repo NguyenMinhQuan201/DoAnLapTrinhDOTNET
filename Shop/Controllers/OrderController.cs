@@ -52,14 +52,19 @@ namespace Shop.Controllers
             try
             {
                 var jsoncart = new JavaScriptSerializer().Deserialize<List<Order>>(cartUser);
+                List<decimal> GiaNhap=new List<decimal>();
                 decimal tong = 0;
+                decimal tonggianhap = 0;
                 foreach (var item in jsoncart)
                 {
                     tong = tong + (decimal)item.Tong;
+                    var findGiaNhapById = db.ChiTietSanPhams.Find(item.Prime);
+                    tonggianhap = tonggianhap + (decimal)findGiaNhapById.GiaNhap*item.SoLuong;
                 }
                 
                 var order = new HoaDon()
                 {
+                    TongGiaNhap=tonggianhap,
                     Gia = tong,
                     SDT = phone,
                     DiaChi = addRess,
@@ -82,14 +87,19 @@ namespace Shop.Controllers
             {
                 var jsoncart = new JavaScriptSerializer().Deserialize<List<Order>>(cartUser);
                 var jsonOrder = new JavaScriptSerializer().Deserialize<List<ThongTin>>(thongtin);
+                List<decimal> GiaNhap = new List<decimal>();
                 decimal tong = 0;
+                decimal tonggianhap = 0;
                 foreach (var item in jsoncart)
                 {
                     tong = tong + (decimal)item.Tong;
+                    var findGiaNhapById = db.ChiTietSanPhams.Find(item.Prime);
+                    tonggianhap = tonggianhap + (decimal)findGiaNhapById.GiaNhap * item.SoLuong;
                 }
 
                 var order = new HoaDon()
                 {
+                    TongGiaNhap=tonggianhap,
                     Gia = tong,
                     SDT = jsonOrder[0].phone,
                     DiaChi = jsonOrder[0].address,

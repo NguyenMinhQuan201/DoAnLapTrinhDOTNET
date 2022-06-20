@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,12 @@ namespace DoAnLapTrinhDOTNET.Controllers
 {
     public class ThongKeDoanhThuController : Controller
     {
+        private LipstickDbContext db = new LipstickDbContext();
         // GET: ThongKeDoanhThu
         public ActionResult Index()
         {
-            return View();
+            var lst = db.HoaDons.ToList();
+            return View(lst);
         }
     }
 }

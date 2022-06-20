@@ -35,8 +35,16 @@ namespace Models.Framework
                 .Property(e => e.Gia)
                 .HasPrecision(18, 0);
 
+            modelBuilder.Entity<ChiTietSanPham>()
+                .Property(e => e.GiaNhap)
+                .HasPrecision(18, 0);
+
             modelBuilder.Entity<HoaDon>()
                 .Property(e => e.Gia)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<HoaDon>()
+                .Property(e => e.TongGiaNhap)
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<HoaDon>()

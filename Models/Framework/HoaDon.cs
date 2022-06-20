@@ -30,6 +30,8 @@ namespace Models.Framework
 
         public DateTime? NgayGio { get; set; }
 
+        public decimal? TongGiaNhap { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
     }

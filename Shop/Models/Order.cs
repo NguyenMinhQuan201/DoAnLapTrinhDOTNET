@@ -27,5 +27,7 @@ namespace Shop.Models
         public int SoLuong { get; set; }
 
         public decimal Tong { get; set; }
+
+        public decimal GiaNhap { get; set; }
     }
 }

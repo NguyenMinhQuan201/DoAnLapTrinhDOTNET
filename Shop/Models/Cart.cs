@@ -33,5 +33,6 @@ namespace Shop.Models
         public decimal Tong { get; set; }
         public string Mau { get; set; }
         public string Kich { get; set; }
+        public decimal GiaNhap { get; set; }
     }
 }

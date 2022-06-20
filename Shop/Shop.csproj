@@ -151,6 +151,7 @@
     <Compile Include="Code\AspNetActiveDirectoryMembershipProvider.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Controllers\CartsController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -160,6 +161,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\PaypalConfiguration.cs" />
     <Compile Include="Models\PaypalLogger.cs" />
@@ -224,6 +226,12 @@
     <Content Include="Content\img\banner\banner-1.jpg" />
     <Content Include="Content\img\banner\banner-2.jpg" />
     <Content Include="Content\img\banner\banner-3.jpg" />
+    <Content Include="Content\img\blog-4.jpg" />
+    <Content Include="Content\img\blog-5.jpg" />
+    <Content Include="Content\img\blog-6.jpg" />
+    <Content Include="Content\img\blog-7.jpg" />
+    <Content Include="Content\img\blog-8.jpg" />
+    <Content Include="Content\img\blog-9.jpg" />
     <Content Include="Content\img\blog-img-01.jpg" />
     <Content Include="Content\img\blog-img-02.jpg" />
     <Content Include="Content\img\blog-img.jpg" />
@@ -238,9 +246,9 @@
     <Content Include="Content\img\blog\blog-9.jpg" />
     <Content Include="Content\img\blog\details\blog-author.jpg" />
     <Content Include="Content\img\blog\details\blog-details.jpg" />
-    <Content Include="Content\img\blog_1.jpg" />
-    <Content Include="Content\img\blog_2.jpg" />
-    <Content Include="Content\img\blog_3.jpg" />
+    <Content Include="Content\img\blog-1.jpg" />
+    <Content Include="Content\img\blog-2.jpg" />
+    <Content Include="Content\img\blog-3.jpg" />
     <Content Include="Content\img\breadcrumb-bg.jpg" />
     <Content Include="Content\img\chat-right-text.svg" />
     <Content Include="Content\img\clients\client-1.png" />
@@ -439,6 +447,7 @@
     <Content Include="Views\Regis\Index.cshtml" />
     <Content Include="Views\Home\ProductsHot.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

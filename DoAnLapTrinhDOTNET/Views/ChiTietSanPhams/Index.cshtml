@@ -28,12 +28,13 @@
     <link href="~/Content/table/css/table_11col.css" rel="stylesheet" />
 </head>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
 <body>
+    <div style="background-color: #4CAF50; /* Green */ border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; font-size: 16px;">
+        @Html.ActionLink("Create New", "Create", new { @class = "btn-create" }, new { @style = "color: #fff"})     
+    </div>
     <div class="limiter">
+
         <div class="container-table100">
             <div class="wrap-table100">
                 <div class="table100">
@@ -45,12 +46,13 @@
                                 <th class="col3">ID loại sản</th>
                                 <th class="col4">Ảnh</th>
                                 <th class="col5">Giá</th>
+                                <th class="col5">Giá Nhập</th>
                                 <th class="col6">Mô tả</th>
                                 <th class="col7">Màu sắc SP</th>
                                 <th class="col8">Kích cỡ SP</th>
                                 <th class="col9">Số lượng</th>
                                 <th class="col10">Lượt xem</th>
-                                <th class="col11">Chức năng</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -62,16 +64,13 @@
                                     <td class="col3">@Html.DisplayFor(modelItem => item.IDLoaiSanPham)</td>
                                     <td class="col4">@Html.DisplayFor(modelItem => item.Images)</td>
                                     <td class="col5">@Html.DisplayFor(modelItem => item.Gia)</td>
+                                    <td class="col5">@Html.DisplayFor(modelItem => item.GiaNhap)</td>
                                     <td class="col6">@Html.DisplayFor(modelItem => item.Mota)</td>
                                     <td class="col7">@Html.DisplayFor(modelItem => item.MauSacSP)</td>
                                     <td class="col8">@Html.DisplayFor(modelItem => item.KichCoSP)</td>
                                     <td class="col9">@Html.DisplayFor(modelItem => item.SoLuong)</td>
                                     <td class="col10">@Html.DisplayFor(modelItem => item.LuotXem)</td>
-                                    <td class="col11">
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.IDLoaiSanPham }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.IDLoaiSanPham }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.IDLoaiSanPham })
-                                    </td>
+
                                 </tr>
 
                             }
@@ -83,82 +82,3 @@
     </div>
 
 </body>
-
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SanPham.Ten)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ten)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IDLoaiSanPham)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Images)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mota)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MauSacSP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KichCoSP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoLuong)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LuotXem)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SanPham.Ten)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ten)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDLoaiSanPham)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Images)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mota)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MauSacSP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KichCoSP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoLuong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LuotXem)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
-
-</table>
-*@

@@ -1,6 +1,7 @@
 ﻿class token {
     constructor() {
         this.renderToken();
+        this.typecilck();
     }
     renderToken() {
         $('#lay_token').on('click', function () {
@@ -20,28 +21,38 @@
                 type: "POST",
                 success: function (response) {
                     console.log(response.access_token);
-                    if (response.error_description == null) {
-                        localStorage.setItem('token', response.access_token)
-                        var key = localStorage.getItem('token')
-                        console.log("2");
-                        $.ajax({
-                            url: "/Admin/Gettoken",
-                            data: {
-                                token: response.access_token
-                            },
-                            dataType: "json",
-                            type: "GET",
-                            success: function (response2) {
-                                console.log(response2.status);
-                                window.location.href = "/Home/Index"
-                            }
-                        })
-                    }
-                    else {
-                        
-                    }
+
+                    localStorage.setItem('token', response.access_token)
+                    var key = localStorage.getItem('token')
+                    console.log("2");
+                    $.ajax({
+                        url: "/Admin/Gettoken",
+                        data: {
+                            token: response.access_token,
+                            user: user
+                        },
+                        dataType: "json",
+                        type: "GET",
+                        success: function (response2) {
+                            console.log(response2.status);
+                            window.location.href = "/Home/Index"
+                        }
+                    })
+
                 }
-            })
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                $('#canhbao').html("Sai tài khoản hoặc mật khẩu")
+            });
+        });
+    }
+    typecilck() {
+        $("#tk").keypress(function () {
+            console.log("Handler for .keypress() called.");
+            $('#canhbao').html("")
+        });
+        $("#mk").keypress(function () {
+            console.log("Handler for .keypress() called.");
+            $('#canhbao').html("")
         });
     }
 }
