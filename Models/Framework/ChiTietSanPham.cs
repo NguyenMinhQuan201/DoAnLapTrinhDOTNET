@@ -36,6 +36,8 @@ namespace Models.Framework
 
         public int? LuotXem { get; set; }
 
+        public decimal? GiaNhap { get; set; }
+
         public virtual SanPham SanPham { get; set; }
     }
 }

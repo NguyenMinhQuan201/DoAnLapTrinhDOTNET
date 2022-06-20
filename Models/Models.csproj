@@ -67,6 +67,7 @@
     <Compile Include="Framework\ThongKe.cs" />
     <Compile Include="Framework\TinTuc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SendContact\ContactDao.cs" />
     <Compile Include="UserRegistration\UserRegisDao.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -35,7 +35,6 @@
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li><hr class="dropdown-divider" /></li>
                     <li>@Html.ActionLink("DangXuat", "Logout", "Admin", null, new { @class = "dropdown-item" })</li>
-
                 </ul>
             </li>
         </ul>
@@ -53,7 +52,7 @@
                         <div class="sb-sidenav-menu-heading">Interface</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Chỉnh sửa chính
+                            Các Trang
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -63,9 +62,10 @@
                                 @Html.ActionLink("Chi tiết sản phẩm", "Index", "ChiTietSanPhams", null, new { @class = "nav-link" })
                                 @Html.ActionLink("Thống kê", "Index", "Report", null, new { @class = "nav-link" })
                                 @Html.ActionLink("Tin tức", "Index", "News", null, new { @class = "nav-link" })
+                                @Html.ActionLink("Doanh Thu", "Index", "ThongKeDoanhThu", null, new { @class = "nav-link" })
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        @*<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Pages
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -95,7 +95,7 @@
                                     </nav>
                                 </div>
                             </nav>
-                        </div>
+                        </div>*@
                         <div class="sb-sidenav-menu-heading">Addons</div>
                         <a class="nav-link" href="charts.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>

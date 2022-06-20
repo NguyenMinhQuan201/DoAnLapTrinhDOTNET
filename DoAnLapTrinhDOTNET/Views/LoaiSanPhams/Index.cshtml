@@ -27,11 +27,10 @@
     <!--===============================================================================================-->
 </head>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
 <body>
+    <div style="background-color: #4CAF50; /* Green */ border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; font-size: 16px;">
+        @Html.ActionLink("Create New", "Create", new { @class = "btn-create" }, new { @style = "color: #fff" })
+    </div>
     <div class="limiter">
         <div class="container-table100">
             <div class="wrap-table100">
@@ -71,39 +70,39 @@
 </body>
 
 @*
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Ten)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Alias)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ten)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Alias)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TrangThai)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IDLoaiSanPham }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IDLoaiSanPham }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IDLoaiSanPham })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Ten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Alias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alias)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrangThai)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IDLoaiSanPham }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IDLoaiSanPham }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IDLoaiSanPham })
+                </td>
+            </tr>
+        }
+
+    </table>
 *@
