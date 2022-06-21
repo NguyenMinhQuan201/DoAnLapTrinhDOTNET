@@ -292,6 +292,7 @@
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ChiTietSanPhamsController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoaiSanPhamsController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -447,6 +448,7 @@
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\Create.cshtml" />
     <Content Include="Views\ThongKeDoanhThu\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
